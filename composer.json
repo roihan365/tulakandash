@@ -1,0 +1,26 @@
+{
+    "name": "roihan365/tulakandashboard",
+    "version": "0.0.1",
+    "description": "TulakanSpace Dashboard template create using tailwindcss",
+    "type": "package",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Roihan365\\Dashboard\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Roihan365\\Dashboard\\TulakanDashboardProvider"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "M Sohiburroihan Akbar"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
