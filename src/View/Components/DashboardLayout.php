@@ -1,6 +1,6 @@
 <?php
 
-namespace Roihan365\Dashboard\View\Components;
+namespace App\View\Components;
 
 use Illuminate\View\Component;
 use Illuminate\View\View;
