@@ -3,5 +3,5 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/dashboard', function () {
-    return view('tulakandashboard::dashboard.index');
+    return view('dashboard.index');
 });

@@ -22,7 +22,7 @@
 
 <body class="font-sans antialiased">
     <div class="min-h-screen bg-gray-100">
-        @include('tulakandashboard::layouts.includes.navigation')
+        @include('layouts.includes.navigation')
         <main class="p-8">
             {{ $slot }}
         </main>

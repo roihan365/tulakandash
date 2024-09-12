@@ -12,6 +12,6 @@ class DashboardLayout extends Component
      */
     public function render(): View
     {
-        return view('tulakandashboard::layouts.dashboard');
+        return view('layouts.dashboard');
     }
 }

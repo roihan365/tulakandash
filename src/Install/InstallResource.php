@@ -28,7 +28,7 @@ trait InstallResource
 
         // Components...
         (new Filesystem)->ensureDirectoryExists(app_path('View/Components'));
-        (new Filesystem)->copyDirectory(__DIR__ . '/../../View/Components', app_path('View/Components'));
+        (new Filesystem)->copyDirectory(__DIR__ . '/../View/Components', app_path('View/Components'));
 
         // Route
         (new Filesystem)->ensureDirectoryExists(base_path('routes'));
