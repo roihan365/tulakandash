@@ -24,15 +24,15 @@ trait InstallResource
 
         // Views...
         (new Filesystem)->ensureDirectoryExists(resource_path('views'));
-        (new Filesystem)->copyDirectory(__DIR__ . '/../resources/views', resource_path('views'));
+        (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/views', resource_path('views'));
 
         // Components...
         (new Filesystem)->ensureDirectoryExists(app_path('View/Components'));
-        (new Filesystem)->copyDirectory(__DIR__ . '/../View/Components', app_path('View/Components'));
+        (new Filesystem)->copyDirectory(__DIR__ . '/../../View/Components', app_path('View/Components'));
 
         // Route
         (new Filesystem)->ensureDirectoryExists(base_path('routes'));
-        (new Filesystem)->copyDirectory(__DIR__ . '/../routes', base_path('routes'));
+        (new Filesystem)->copyDirectory(__DIR__ . '/../../routes', base_path('routes'));
 
         $this->info('Installing and building Node dependencies.');
         $this->runCommands(['npm install', 'npm run build']);
