@@ -32,7 +32,7 @@ trait InstallResource
 
         // Route
         (new Filesystem)->ensureDirectoryExists(base_path('routes'));
-        (new Filesystem)->copy(__DIR__ . '/../routes/dashboard.php', base_path('routes/dashboard.php'));
+        (new Filesystem)->copyDirectory(__DIR__ . '/../routes', base_path('routes'));
 
         $this->info('Installing and building Node dependencies.');
         $this->runCommands(['npm install', 'npm run build']);
