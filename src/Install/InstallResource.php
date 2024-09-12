@@ -23,8 +23,8 @@ trait InstallResource
         $this->call('vendor:publish', ['--tag' => 'tulakandashboard']);
 
         // Views...
-        (new Filesystem)->ensureDirectoryExists(resource_path('views'));
-        (new Filesystem)->copyDirectory(__DIR__ . '/../../resources/views', resource_path('views'));
+        (new Filesystem)->ensureDirectoryExists(resource_path());
+        (new Filesystem)->copyDirectory(__DIR__ . '/../../resources', resource_path());
 
         // Components...
         (new Filesystem)->ensureDirectoryExists(app_path('View/Components'));
