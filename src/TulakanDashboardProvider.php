@@ -43,10 +43,10 @@ class TulakanDashboardProvider extends ServiceProvider
         // Blade::componentNamespace('Roihan365\\Dashboard\\View\\Components', 'tulakandashboard');
 
         // Publikasi views, assets, konfigurasi, dan rute
-        $this->publishes([
-            __DIR__ . '/../resources/views' => resource_path('views/vendor/tulakandashboard'),
-            __DIR__ . '/../public/assets' => public_path('vendor/tulakandashboard'),
-        ], 'tulakandashboard');
+        // $this->publishes([
+        //     __DIR__ . '/../resources/views' => resource_path('views/tulakandashboard'),
+        //     __DIR__ . '/../public/assets' => public_path('vendor/tulakandashboard'),
+        // ], 'tulakandashboard');
 
         // Daftarkan command jika dijalankan dari CLI
         if ($this->app->runningInConsole()) {

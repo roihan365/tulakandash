@@ -7,6 +7,7 @@ use Symfony\Component\Process\Process;
 
 class InstallLibrary extends Command
 {
+    use InstallResource;
     // Nama command yang akan dipanggil dari CLI
     protected $signature = 'tulakandash:install';
 
@@ -16,27 +17,6 @@ class InstallLibrary extends Command
     public function handle(): void
     {
         $this->installResource();
-    }
-
-    protected function installResource()
-    {
-        $this->updateNodePackages(function ($packages) {
-            return [
-                '@tailwindcss/forms' => '^0.5.2',
-                'alpinejs' => '^3.4.2',
-                'autoprefixer' => '^10.4.2',
-                'postcss' => '^8.4.31',
-                'tailwindcss' => '^3.1.0',
-            ] + $packages;
-        });
-
-        // Publikasi file views, components, dan asset
-        $this->info('Publishing assets, views, and components...');
-        $this->call('vendor:publish', ['--tag' => 'tulakandashboard']);
-
-        $this->info('Installing and building Node dependencies.');
-        $this->runCommands(['npm install', 'npm run build']);
-        $this->info('Dashboard resources installed successfully.');
     }
 
     public static function updateNodePackages(callable $callback, $dev = true)

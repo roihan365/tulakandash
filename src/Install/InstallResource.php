@@ -18,9 +18,13 @@ trait InstallResource
             ] + $packages;
         });
 
+        // Publikasi file views, components, dan asset
+        $this->info('Publishing assets, views, and components...');
+        $this->call('vendor:publish', ['--tag' => 'tulakandashboard']);
+
         // Views...
-        (new Filesystem)->ensureDirectoryExists(resource_path('views/vendor/tulakandashboard'));
-        (new Filesystem)->copyDirectory(__DIR__ . '/../resources/views', resource_path('views/vendor/tulakandashboard'));
+        (new Filesystem)->ensureDirectoryExists(resource_path('views'));
+        (new Filesystem)->copyDirectory(__DIR__ . '/../resources/views', resource_path('views'));
 
         // Components...
         (new Filesystem)->ensureDirectoryExists(app_path('View/Components'));
@@ -30,6 +34,9 @@ trait InstallResource
         (new Filesystem)->ensureDirectoryExists(base_path('routes'));
         (new Filesystem)->copy(__DIR__ . '/../routes/dashboard.php', base_path('routes/dashboard.php'));
 
+        $this->info('Installing and building Node dependencies.');
+        $this->runCommands(['npm install', 'npm run build']);
+        $this->info('Dashboard library installed successfully.');
         $this->components->info('Dashboard scaffolding installed successfully.');
     }
 }
