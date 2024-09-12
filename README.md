@@ -18,10 +18,12 @@ If you do not have a Laravel application yet, you can create one using Composer:
 ```bash
 composer create-project laravel/laravel my-laravel-app
 ```
+### 2. Install TULAKANDASH package
 If you have an existing Laravel application, you can install the TULAKANDASH package using Composer:
 ```bash
   composer require roihan365/tulakandashboard
 ```
+### 3. Run Artisan Command
 After installing the package, publish the views, routes, components, and other resources using the following Artisan command:
 ```bash
   php artisan tulakan:install
