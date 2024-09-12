@@ -30,7 +30,8 @@ After installing the package, publish the views, routes, components, and other r
 ```
 This command will copy the package's resources into your Laravel application, allowing you to start using the dashboard components immediately.
 
-### 4. Add code route dashboard to routes/web.php
+### 4. Add Route Code to `routes/web.php`
+Add the following line to the end of your `routes/web.php` file:
 ```bash
   require __DIR__ . '/dashboard.php';
 ```
