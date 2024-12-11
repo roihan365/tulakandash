@@ -11,9 +11,10 @@
     <!-- User Dropdown -->
     <div class="relative">
         <button @click="open = !open" class="flex items-center space-x-3 focus:outline-none">
-            <img src="https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light"
-                class="h-8 w-8 rounded-full" alt="User Avatar">
-            <span class="text-gray-700 font-semibold">Rian Hendra</span>
+            <img class="w-8 h-8 rounded-full object-cover mb-3"
+                src="https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light"
+                alt="Profile Picture">
+            <span class="text-gray-700 font-semibold">Roihan365</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -22,7 +23,11 @@
         <div x-show="open" @click.outside="open = false" x-transition
             class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg">
             <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile</a>
-            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</a>
+            <form action="{{ route('logout') }}" method="post">
+                @csrf
+                <button type="submit"
+                    class="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</button>
+            </form>
         </div>
     </div>
 </div>

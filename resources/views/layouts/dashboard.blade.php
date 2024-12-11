@@ -16,15 +16,15 @@
 
 </head>
 
-<body class="bg-body" x-data="{ sidebarOpen: false, open: false }">
+<body class="bg-body" x-data="{ sidebarOpen: false, open: false, openDetail: 0 }">
     <!-- Layout -->
-    <div class="flex flex-col md:flex-row">
+    <div class="flex flex-col md:flex-row min-h-screen">
         <!-- Sidebar -->
 
         @include('layouts.includes.sidebar')
 
         <!-- Main Content -->
-        <div id="main-content" class="w-full">
+        <div id="main-content" class="w-full overflow-x-auto">
             @include('layouts.includes.navbar')
 
             <div class="p-6 ml-0">
