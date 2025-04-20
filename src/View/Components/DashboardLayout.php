@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components;
+namespace Roihan365\Dashboard\View\Components;
 
 use Illuminate\View\Component;
 use Illuminate\View\View;
@@ -12,6 +12,6 @@ class DashboardLayout extends Component
      */
     public function render(): View
     {
-        return view('layouts.dashboard');
+        return view('dashboard::layouts.dashboard');
     }
 }

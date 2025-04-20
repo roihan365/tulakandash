@@ -18,22 +18,6 @@ trait InstallResource
             ] + $packages;
         });
 
-        // Publikasi file views, components, dan asset
-        $this->info('Publishing assets, views, and components...');
-        $this->call('vendor:publish', ['--tag' => 'tulakandashboard']);
-
-        // Views...
-        (new Filesystem)->ensureDirectoryExists(resource_path());
-        (new Filesystem)->copyDirectory(__DIR__ . '/../../resources', resource_path());
-
-        // Components...
-        (new Filesystem)->ensureDirectoryExists(app_path('View/Components'));
-        (new Filesystem)->copyDirectory(__DIR__ . '/../View/Components', app_path('View/Components'));
-
-        // Route
-        (new Filesystem)->ensureDirectoryExists(base_path('routes'));
-        (new Filesystem)->copyDirectory(__DIR__ . '/../../routes', base_path('routes'));
-
         // copy tailwind, postcss, and vite config
         copy(__DIR__ . '/../../tailwind.config.js', base_path('tailwind.config.js'));
         copy(__DIR__ . '/../../postcss.config.js', base_path('postcss.config.js'));

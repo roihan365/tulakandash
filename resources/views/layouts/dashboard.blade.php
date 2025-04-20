@@ -21,11 +21,12 @@
     <div class="flex flex-col md:flex-row min-h-screen">
         <!-- Sidebar -->
 
-        @include('layouts.includes.sidebar')
+        @include('dashboard::layouts.includes.sidebar')
+
 
         <!-- Main Content -->
         <div id="main-content" class="w-full overflow-x-auto">
-            @include('layouts.includes.navbar')
+            @include('dashboard::layouts.includes.navbar')
 
             <div class="p-6 ml-0">
                 {{ $slot }}
