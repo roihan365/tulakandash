@@ -15,7 +15,9 @@ class TulakanDashboardProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->commands([
+            InstallLibrary::class,
+        ]);
     }
 
     /**

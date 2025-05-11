@@ -35,7 +35,7 @@ composer require roihan365/tulakandashboard
 Run the following Artisan command to publish the package assets:
 
 ```bash
-php artisan tulakan:install
+php artisan tulakandash:install
 ```
 
 This command will install the necessary depedencies and components to your Laravel application.
