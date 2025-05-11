@@ -18,10 +18,14 @@ trait InstallResource
             ] + $packages;
         });
 
+        // Views...
+        (new Filesystem)->ensureDirectoryExists(resource_path());
+        (new Filesystem)->copyDirectory(__DIR__ . '/../../resources', resource_path());
+        
         // copy tailwind, postcss, and vite config
-        copy(__DIR__ . '/../../tailwind.config.js', base_path('tailwind.config.js'));
-        copy(__DIR__ . '/../../postcss.config.js', base_path('postcss.config.js'));
-        copy(__DIR__ . '/../../vite.config.js', base_path('vite.config.js'));
+        // copy(__DIR__ . '/../../tailwind.config.js', base_path('tailwind.config.js'));
+        // copy(__DIR__ . '/../../postcss.config.js', base_path('postcss.config.js'));
+        // copy(__DIR__ . '/../../vite.config.js', base_path('vite.config.js'));
 
         $this->info('Installing and building Node dependencies.');
         $this->runCommands(['npm install', 'npm run build']);

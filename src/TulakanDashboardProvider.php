@@ -29,7 +29,6 @@ class TulakanDashboardProvider extends ServiceProvider
         Blade::component('dashboard-layout', DashboardLayout::class);
         $componentPath = __DIR__ . '/../resources/views/components';
 
-        // Cek apakah folder komponen ada
         if (is_dir($componentPath)) {
             $files = scandir($componentPath);
 
@@ -42,6 +41,23 @@ class TulakanDashboardProvider extends ServiceProvider
 
                     // Daftarkan komponen Blade dengan nama yang benar
                     Blade::component('dashboard::components.' . $componentName, 'dashboard-' . $componentName);
+
+                    if (is_dir($componentPath . '/' . $file)) {
+                        $folderName = $file;
+
+                        // Dapatkan semua file dalam folder (misal header, footer, dll)
+                        $subFiles = scandir($componentPath . '/' . $folderName);
+                        foreach ($subFiles as $subFile) {
+                            if ($subFile !== '.' && $subFile !== '..') {
+                                // Ambil nama file tanpa ekstensi .blade.php
+                                $componentName = pathinfo($subFile, PATHINFO_FILENAME);
+                                $componentName = str_replace('.blade', '', $componentName); // Pastikan ekstensi .blade dihapus jika ada
+
+                                // Daftarkan komponen Blade dengan nama yang benar
+                                Blade::component('dashboard::components.' . $folderName . '.' . $componentName, 'dashboard-' . $folderName . '-' . $componentName);
+                            }
+                        }
+                    }
                 }
             }
         }

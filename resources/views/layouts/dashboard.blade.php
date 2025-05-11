@@ -16,24 +16,9 @@
 
 </head>
 
-<body class="bg-body" x-data="{ sidebarOpen: false, open: false, openDetail: 0 }">
+<body class="bg-background" x-data="{ sidebarOpen: false, open: false, openDetail: 0 }">
     <!-- Layout -->
-    <div class="flex flex-col md:flex-row min-h-screen">
-        <!-- Sidebar -->
-
-        @include('dashboard::layouts.includes.sidebar')
-
-
-        <!-- Main Content -->
-        <div id="main-content" class="w-full overflow-x-auto">
-            @include('dashboard::layouts.includes.navbar')
-
-            <div class="p-6 ml-0">
-                {{ $slot }}
-            </div>
-        </div>
-    </div>
+    {{ $slot }}
 </body>
-
 
 </html>
