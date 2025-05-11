@@ -21,6 +21,9 @@ trait InstallResource
         // Views...
         (new Filesystem)->ensureDirectoryExists(resource_path());
         (new Filesystem)->copyDirectory(__DIR__ . '/../../resources', resource_path());
+
+        (new Filesystem)->ensureDirectoryExists(app_path('View/Components'));
+        (new Filesystem)->copyDirectory(__DIR__ . '/../View/Components', app_path('View/Components'));
         
         // copy tailwind, postcss, and vite config
         // copy(__DIR__ . '/../../tailwind.config.js', base_path('tailwind.config.js'));
