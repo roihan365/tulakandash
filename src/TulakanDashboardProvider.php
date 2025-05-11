@@ -15,16 +15,7 @@ class TulakanDashboardProvider extends ServiceProvider
      */
     public function register(): void
     {
-        // // Publish views
-        // $this->loadViewsFrom(__DIR__ . '/../resources/views', 'tulakandashboard');
-
-        // // Publish routes
-        // $this->loadRoutesFrom(__DIR__ . '/../routes/dashboard.php');
-
-        // // Publish assets (optional)
-        // $this->publishes([
-        //     __DIR__ . '/../public/assets' => public_path('vendor/tulakandashboard'),
-        // ], 'public');
+        //
     }
 
     /**
@@ -32,27 +23,43 @@ class TulakanDashboardProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // dd('ahay ganteng');
-        // if (! $this->app->runningInConsole()) {
-        //     return;
-        // }
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'dashboard');
 
-        // $this->commands([
-        //     Install\InstallLibrary::class,
-        // ]);
-        // Blade::componentNamespace('Roihan365\\Dashboard\\View\\Components', 'tulakandashboard');
+        // Load component (opsional)
+        Blade::component('dashboard-layout', DashboardLayout::class);
+        $componentPath = __DIR__ . '/../resources/views/components';
 
-        // Publikasi views, assets, konfigurasi, dan rute
-        // $this->publishes([
-        //     __DIR__ . '/../resources/views' => resource_path('views/tulakandashboard'),
-        //     __DIR__ . '/../public/assets' => public_path('vendor/tulakandashboard'),
-        // ], 'tulakandashboard');
+        if (is_dir($componentPath)) {
+            $files = scandir($componentPath);
 
-        // Daftarkan command jika dijalankan dari CLI
-        if ($this->app->runningInConsole()) {
-            $this->commands([
-                InstallLibrary::class,
-            ]);
+            // Mendaftarkan setiap komponen di dalam folder sebagai komponen Blade
+            foreach ($files as $file) {
+                if ($file !== '.' && $file !== '..') {
+                    // Ambil nama file tanpa ekstensi .blade.php
+                    $componentName = pathinfo($file, PATHINFO_FILENAME); // Ambil nama file tanpa ekstensi
+                    $componentName = str_replace('.blade', '', $componentName); // Pastikan ekstensi .blade dihapus jika ada
+
+                    // Daftarkan komponen Blade dengan nama yang benar
+                    Blade::component('dashboard::components.' . $componentName, 'dashboard-' . $componentName);
+
+                    if (is_dir($componentPath . '/' . $file)) {
+                        $folderName = $file;
+
+                        // Dapatkan semua file dalam folder (misal header, footer, dll)
+                        $subFiles = scandir($componentPath . '/' . $folderName);
+                        foreach ($subFiles as $subFile) {
+                            if ($subFile !== '.' && $subFile !== '..') {
+                                // Ambil nama file tanpa ekstensi .blade.php
+                                $componentName = pathinfo($subFile, PATHINFO_FILENAME);
+                                $componentName = str_replace('.blade', '', $componentName); // Pastikan ekstensi .blade dihapus jika ada
+
+                                // Daftarkan komponen Blade dengan nama yang benar
+                                Blade::component('dashboard::components.' . $folderName . '.' . $componentName, 'dashboard-' . $folderName . '-' . $componentName);
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

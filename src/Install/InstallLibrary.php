@@ -1,4 +1,5 @@
 <?php
+
 namespace Roihan365\Dashboard\Install;
 
 use Illuminate\Console\Command;
