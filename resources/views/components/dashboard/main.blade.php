@@ -28,7 +28,6 @@
         @endisset
     </div>
 
-    <div class="flex flex-1">
         {{-- Sidebar Mobile --}}
         <div x-show="sidebarOpen" class="fixed inset-0 z-40" style="display: none;">
             <div class="fixed inset-0 bg-black/30" @click="sidebarOpen = false"></div>
@@ -90,5 +89,4 @@
                 </main>
             </div>
         @endisset
-    </div>
 </div>
